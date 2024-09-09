@@ -1,0 +1,47 @@
+{{!< default}}
+{{! The tag above means - insert everything in this file into the {body} of the default.hbs template }}
+  <div class="row h-100 page-row">
+  {{#post}}
+      <div class="col col-xs-12 col-md-12 col-lg-12 main-content post-access-{{visibility}}">
+      <article>
+         <img
+            src="{{#if feature_image}}{{img_url feature_image}}{{else}}{{asset "images/fallback-image.jpg"}}{{/if}}"
+            class="top-image"
+            alt="{{title}}"
+            title="{{title}}"
+            loading="lazy"
+          />
+        <div class="post-head">
+              <h1 class="top-title text-center">{{title}}</h1>
+              <div class="post-subitems text-center">
+                <i class="fas fa-clock"></i><small class="text-muted badge"><time datetime="{{date format="YYYY-MM-DD"}}">{{date format="DD MMMM YYYY"}}</time></small>
+                {{#primary_author}}<img src="{{#if profile_image}}{{img_url profile_image}}{{else}}{{asset "images/fallback-user.jpg"}}{{/if}}" class="homepage-avatar" alt="{{t "Written by"}} {{name}}" title="{{t "Written by"}} {{name}}"></a><small class="text-muted badge">{{name}}</small>{{/primary_author}}
+                <i class="fas fa-book"></i><small class="text-muted badge">{{reading_time seconds=(t "< 1 min read") minute=(t "1 min read") minutes=(t "% min read")}}</small>
+              </div>
+        </div>
+         <hr class="fancy-hr" />
+      <div class="post-content">
+          {{#if access}}
+              {{content}}
+
+              {{#if @member.paid}}
+                <p class="subscription-text">{{t "Awesome to see you are a paying member 🎉"}}</p>
+              {{else if @member}}
+                <p class="subscription-text">{{t "Thank you for being a member 🙌"}}</p>
+              {{else}}
+                <p class="subscription-text">{{t "Sign-up to view our Premium content."}}</p>
+              {{/if}}
+
+              {{#if tags}}
+                <div class="tagslist">
+                  {{#foreach tags}}
+                    <a href="{{@site.url}}/tag/{{name}}" class="hvr-grow">#{{name}}</a>
+                  {{/foreach}}
+                </div>
+              {{/if}}<!-- end tags if -->
+          {{/if}}
+      </div>
+      </article>
+    </div>
+{{/post}}
+</div>

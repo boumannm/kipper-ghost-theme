@@ -1,0 +1,53 @@
+<div class="container-wrap">
+{{#get "posts" filter="featured:false" limit="all" as |non-featured|}}
+{{#foreach non-featured}}
+    <div class="row post-wrap regular-post post-access-{{visibility}}">
+            <div
+              class="col-12 col-md-4 col-lg-4 tab-image"
+            >
+              <img
+                src="{{#if feature_image}}{{img_url feature_image}}{{else}}{{asset "images/fallback-image.jpg"}}{{/if}}"
+                class="top-image"
+                alt="{{title}}"
+                title="{{title}}"
+                loading="lazy"
+              />
+            </div>
+
+
+            <div
+              class="row col-12 col-md-8 col-lg-8 vertical-align-item homepage-post-item"
+            >
+            <h2 class="highlight">{{title}}</h2>
+            {{#has visibility="paid"}}<span class="premium">{{t "Premium"}}</span>{{/has}}{{#has visibility="members"}}<span class="premium">{{t "Members-Only"}}</span>{{/has}}
+              <p class="subtext-content">
+                {{excerpt}}
+              </p>
+              <div class="card-actions-top source-item w-100">
+                {{#if access}}
+
+                  <a
+                    href="{{url}}"
+                    title="{{title}}"
+                    class="hvr-grow button-url"
+                    ><i class="fas fa-play"></i>{{t "Read More"}}</a
+                  >
+                {{else}}
+                  <a
+                    href="#/portal/signup"
+                    title="{{title}}"
+                    class="hvr-grow button-url"
+                    ><i class="fas fa-play"></i>{{t "Subscribe"}}</a
+                  >
+                {{/if}}
+                   <div class="homepage-post-details">
+                    <small class="text-muted badge">
+                        <time datetime="{{date format="YYYY-MM-DD"}}">{{date format="DD MMMM YYYY"}}</time>
+                  </small>
+                  </div>
+                  </div>
+              </div>
+    </div>
+{{/foreach}}
+{{/get}}
+</div>

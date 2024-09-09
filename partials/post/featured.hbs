@@ -1,0 +1,44 @@
+   {{#get "posts" limit="1" filter="featured:true" order="published_at desc" as |featured| }}
+    {{#foreach featured}}
+ 
+        <div class="container-fluid col-12 main-top-content">
+            <div class="container-wrap row vertical-align-item">
+              <div class="col-12 col-lg-7">
+               <h1 class="top-title text-truncate">{{title}}</h1>
+                <p class="subtext">
+                  {{excerpt}}
+                </p>
+                <div class="source-item">
+                {{#if access}}
+
+                  <a
+                    href="{{url}}"
+                    title="{{title}}"
+                    class="hvr-grow button-url"
+                    ><i class="fas fa-play"></i>{{t "Read More"}}</a
+                  >
+                {{else}}
+                  <a
+                    href="#/portal/signup"
+                    title="{{title}}"
+                    class="hvr-grow button-url"
+                    ><i class="fas fa-play"></i>{{t "Subscribe"}}</a
+                  >
+                {{/if}}
+                  {{#has visibility="paid"}}<span class="premium">{{t "Premium"}}</span>{{/has}}{{#has visibility="members"}}<span class="premium">{{t "Members-Only"}}</span>{{/has}} 
+                </div>
+              </div>
+
+              <div class="col-12 col-lg-5">
+                <img
+                  src="{{#if feature_image}}{{img_url feature_image}}{{else}}{{asset "images/fallback-image.jpg"}}{{/if}}"
+                  class="top-image"
+                  alt="{{title}}"
+                  title="{{title}}"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+        </div>
+  {{/foreach}}
+  {{/get}}

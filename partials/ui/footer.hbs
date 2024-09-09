@@ -1,0 +1,16 @@
+<footer class="page-footer">
+
+    <div class="footer-socials">
+        <a href="{{@site.url}}/rss"><i class="fas fa-rss"></i></a>
+        {{#if @site.facebook}}
+        <a href="{{facebook_url @site.facebook}}" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
+        {{/if}}
+        {{#if @site.twitter}}
+        <a href="{{twitter_url @site.twitter}}" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter" ></i></a>
+        {{/if}}  
+    </div>
+    <p class="text-right theme-name-footer">
+      Powered by <a href="https://boumann.dev/works/kipper" target="_blank" rel="noopener noreferrer">Kipper</a> <br />
+      Created by <a href="https://boumann.dev/works" target="_blank" rel="noopener noreferrer">Michael Boumann</a>
+    </p>
+</footer>
