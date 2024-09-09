@@ -2,7 +2,7 @@
 A [Ghost](http://github.com/tryghost/ghost/) theme. Kipper supports Ghost 4.0 and up.
 
 ## 📸 Screenshot
-![Kipper](https://github.com/boumannm/kipper-ghost-theme/raw/master/assets/screenshot-desktop.png)
+![Kipper](https://github.com/boumannm/kipper-ghost-theme/raw/main/assets/screenshot-desktop.png)
 
 ## 📃 Main Features
 - Responsive layout.
